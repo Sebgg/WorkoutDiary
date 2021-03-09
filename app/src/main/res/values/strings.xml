@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">WorkoutDiary</string>
+    <string name="new_workout">New workout</string>
+    <string name="view_old_workouts">View old workouts</string>
+    <string name="exercise_name">Exercise</string>
+    <string name="exercise_weight">Weight</string>
+    <string name="exercise_reps">Reps</string>
+    <string name="placeholder_number">0</string>
+    <string name="placeholder_text">a</string>
+    <string name="text_add_exercise">Add exercise</string>
+    <string name="text_finish_workout">Finish workout</string>
+    <string name="exercise_dialog_title">Add new exercise to workout</string>
+    <string name="hint_exercise_name">Exercise name</string>
+    <string name="hint_exercise_weight">Weight</string>
+    <string name="unit_exercise_weight_kg">Kg</string>
+    <string name="hint_exercise_reps">Rep count</string>
+</resources>

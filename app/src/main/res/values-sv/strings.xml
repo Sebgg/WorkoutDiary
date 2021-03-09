@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WorkoutDiary</string>
+    <string name="new_workout">Nytt träningspass</string>
+    <string name="view_old_workouts">Se gamla träningar</string>
+    <string name="exercise_name">Övning</string>
+    <string name="exercise_weight">Vikt</string>
+    <string name="exercise_reps">Reps</string>
+    <string name="placeholder_number">0</string>
+    <string name="placeholder_text">a</string>
+    <string name="text_add_exercise">Lägg till övning</string>
+    <string name="text_finish_workout">Avsluta träningspass</string>
+    <string name="exercise_dialog_title">Lägg till en övning till träningspasset</string>
+    <string name="hint_exercise_name">Namn på övningen</string>
+</resources>
