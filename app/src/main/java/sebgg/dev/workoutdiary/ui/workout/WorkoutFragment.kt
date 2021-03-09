@@ -21,7 +21,6 @@ class WorkoutFragment : Fragment() {
         fun newInstance() = WorkoutFragment()
     }
 
-
     private val viewModel: WorkoutViewModel by activityViewModels()
     private lateinit var wAdapter: WorkoutAdapter
 

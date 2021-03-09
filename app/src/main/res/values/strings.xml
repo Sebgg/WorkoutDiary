@@ -14,4 +14,6 @@
     <string name="hint_exercise_weight">Weight</string>
     <string name="unit_exercise_weight_kg">Kg</string>
     <string name="hint_exercise_reps">Rep count</string>
+    <string name="history_date">Date</string>
+    <string name="placeholder_date">1978/0/0</string>
 </resources>

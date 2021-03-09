@@ -75,7 +75,7 @@ class WorkoutAdapter: ListAdapter<Exercise, WorkoutAdapter.ExerciseViewHolder>(E
         companion object {
             fun create(parent: ViewGroup): ExerciseViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
-                        .inflate(R.layout.exercise, parent, false)
+                        .inflate(R.layout.exercise_item, parent, false)
                 return ExerciseViewHolder(view)
             }
         }
