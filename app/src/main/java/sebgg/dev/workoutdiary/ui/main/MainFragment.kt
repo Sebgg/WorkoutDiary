@@ -33,6 +33,10 @@ class MainFragment : Fragment() {
             Log.i("MF","New workout will start")
             createNewWorkout()
         }
+
+        binding.buttonViewOld.setOnClickListener {
+            (activity as MainActivity).showHistory()
+        }
         return binding.root
     }
 

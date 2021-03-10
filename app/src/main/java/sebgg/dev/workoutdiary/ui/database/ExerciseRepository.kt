@@ -11,16 +11,20 @@ class ExerciseRepository(
     private val exerciseDao: ExerciseDao,
     private val workoutDao: WorkoutDao
 ) {
+    // Getters
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
     fun getExercises(wid: Int): Flow<List<Exercise>> {
         return exerciseDao.loadAllByWorkout(wid)
     }
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    suspend fun getAllWorkouts(): List<Workout> {
+    fun getAllWorkouts(): Flow<List<Workout>> {
         return workoutDao.getAll()
     }
 
+    // Inserters
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun insertExercise(exercise: Exercise) {
@@ -33,6 +37,14 @@ class ExerciseRepository(
         workoutDao.insert(workout)
     }
 
+    // Counters
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun countExercises(wid: Int): Int {
+        return exerciseDao.countByWId(wid)
+    }
+
+    // Deleters
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun nukeDB() {

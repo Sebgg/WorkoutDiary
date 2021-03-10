@@ -11,7 +11,7 @@ import java.util.*
 
 class WorkoutViewModel(private val repository: ExerciseRepository): ViewModel() {
 
-    // Keeps track of all ids in current workout
+    // Keeps track current workout id
     var currentWorkout: Int = 1
 
     // Live data passed to the recyclerview
@@ -19,9 +19,9 @@ class WorkoutViewModel(private val repository: ExerciseRepository): ViewModel() 
 
     lateinit var date: String
 
-    init {
-        nukedb()
-    }
+//    init {
+//        nukedb()
+//    }
 
     private fun nukedb() = viewModelScope.launch {
         repository.nukeDB()

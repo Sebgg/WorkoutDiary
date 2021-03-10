@@ -1,6 +1,7 @@
 package sebgg.dev.workoutdiary.ui.database.dao
 
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 import sebgg.dev.workoutdiary.ui.database.converters.DateConverter
 import java.util.*
 
@@ -15,7 +16,7 @@ data class Workout(
 @Dao
 interface WorkoutDao {
     @Query("SELECT * FROM workouts")
-    suspend fun getAll(): List<Workout>
+    fun getAll(): Flow<List<Workout>>
 
     @Query("SELECT * FROM workouts WHERE uid == (:date)")
     suspend fun getAllByDate(date: String): List<Workout>
