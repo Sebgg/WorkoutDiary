@@ -30,8 +30,7 @@ class MainFragment : Fragment() {
         )
 
         binding.buttonNewWorkout.setOnClickListener {
-            Log.i("MF","New workout will start")
-            createNewWorkout()
+            (activity as MainActivity).createNewWorkout()
         }
 
         binding.buttonViewOld.setOnClickListener {
@@ -45,9 +44,4 @@ class MainFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         // TODO: Use the ViewModel
     }
-
-    private fun createNewWorkout() {
-        (activity as MainActivity).createNewWorkout()
-    }
-
 }
