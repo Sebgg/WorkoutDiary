@@ -24,6 +24,12 @@ class ExerciseRepository(
         return workoutDao.getAll()
     }
 
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun getLatestWorkoutID(): Int {
+        return workoutDao.getLatest()
+    }
+
     // Inserters
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
