@@ -92,9 +92,9 @@ class WorkoutFragment : Fragment() {
         return if (name.isBlank() or weight.isBlank() or reps.isBlank()) {
             dialog.cancel()
             showShortToast(requireView(), "One input field was not filled in!")
-            Exercise("-a", 0, 0, viewModel.currentWorkout)
+            Exercise("-a", 0, 0, viewModel.currentWorkoutID)
         } else {
-            Exercise(name, weight.toInt(), reps.toInt(), viewModel.currentWorkout)
+            Exercise(name, weight.toInt(), reps.toInt(), viewModel.currentWorkoutID)
         }
     }
 }

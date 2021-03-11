@@ -3,6 +3,8 @@ package sebgg.dev.workoutdiary
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.SavedStateViewModelFactory
+import sebgg.dev.workoutdiary.ui.helpers.SStateViewModel
 import sebgg.dev.workoutdiary.ui.history.HistoryFragment
 import sebgg.dev.workoutdiary.ui.history.HistoryViewModel
 import sebgg.dev.workoutdiary.ui.history.HistoryViewModelFactory
@@ -22,6 +24,10 @@ class MainActivity : AppCompatActivity() {
         HistoryViewModelFactory((application as WorkoutApplication).repository)
     }
 
+    private val savedStateViewModel: SStateViewModel by viewModels {
+        SavedStateViewModelFactory(application, this)
+    }
+
     private lateinit var workoutFragment: WorkoutFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,10 +42,18 @@ class MainActivity : AppCompatActivity() {
 
     fun createNewWorkout() {
         viewModel.date = Date().toString()
+        viewModel.setWID(savedStateViewModel.getLatestWorkout() + 1)
         workoutFragment = WorkoutFragment.newInstance()
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, workoutFragment)
         // TODO: add cool animation
+            .commit()
+    }
+
+    fun finishWorkout() {
+        savedStateViewModel.saveLatestWorkout(viewModel.currentWorkoutID)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, MainFragment.newInstance())
             .commit()
     }
 
@@ -49,12 +63,6 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.beginTransaction()
                 .replace(R.id.container, HistoryFragment.newInstance())
-                .commit()
-    }
-
-    fun finishWorkout() {
-        supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
                 .commit()
     }
 
