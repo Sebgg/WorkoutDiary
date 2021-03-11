@@ -32,7 +32,7 @@ class HistoryAdapter: ListAdapter<Workout, HistoryAdapter.WorkoutViewHolder>(Wor
         companion object {
             fun create(parent: ViewGroup): WorkoutViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
-                        .inflate(R.layout.exercise_item, parent, false)
+                        .inflate(R.layout.history_workout_item, parent, false)
                 return WorkoutViewHolder(view)
             }
         }
