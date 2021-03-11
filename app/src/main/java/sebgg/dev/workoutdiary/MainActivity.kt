@@ -44,6 +44,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun showHistory() {
+        // this is needed, otherwise it crashes
+        historyViewModel.dummy = 0
+
         supportFragmentManager.beginTransaction()
                 .replace(R.id.container, HistoryFragment.newInstance())
                 .commit()

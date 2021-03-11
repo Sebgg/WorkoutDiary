@@ -23,6 +23,7 @@ class WorkoutViewModel(private val repository: ExerciseRepository): ViewModel() 
 //        nukedb()
 //    }
 
+    // Can be called to clear the database, mostly for testing and during development
     private fun nukedb() = viewModelScope.launch {
         repository.nukeDB()
     }
