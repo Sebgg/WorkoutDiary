@@ -1,18 +1,16 @@
-package sebgg.dev.workoutdiary.ui.database
+package sebgg.dev.workoutdiary.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import sebgg.dev.workoutdiary.ui.database.converters.DateConverter
-import sebgg.dev.workoutdiary.ui.database.dao.Exercise
-import sebgg.dev.workoutdiary.ui.database.dao.ExerciseDao
-import sebgg.dev.workoutdiary.ui.database.dao.Workout
-import sebgg.dev.workoutdiary.ui.database.dao.WorkoutDao
+import sebgg.dev.workoutdiary.database.dao.Exercise
+import sebgg.dev.workoutdiary.database.dao.ExerciseDao
+import sebgg.dev.workoutdiary.database.dao.Workout
+import sebgg.dev.workoutdiary.database.dao.WorkoutDao
 
 @Database(entities = [Exercise::class, Workout::class], version = 2, exportSchema = false)
 public abstract class ExerciseRoomDatabase:  RoomDatabase(){

@@ -1,10 +1,8 @@
 package sebgg.dev.workoutdiary.ui.history
 
 import androidx.lifecycle.*
-import kotlinx.coroutines.launch
-import sebgg.dev.workoutdiary.ui.database.ExerciseRepository
-import sebgg.dev.workoutdiary.ui.database.dao.Workout
-import sebgg.dev.workoutdiary.ui.workout.WorkoutViewModel
+import sebgg.dev.workoutdiary.database.ExerciseRepository
+import sebgg.dev.workoutdiary.database.dao.Workout
 
 class HistoryViewModel(repository: ExerciseRepository): ViewModel() {
     var dummy: Int = 1

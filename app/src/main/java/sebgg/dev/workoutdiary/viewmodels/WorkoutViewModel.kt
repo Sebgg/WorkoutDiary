@@ -1,12 +1,10 @@
 package sebgg.dev.workoutdiary.ui.workout
 
-import android.util.Log
 import androidx.lifecycle.*
 import kotlinx.coroutines.launch
-import sebgg.dev.workoutdiary.MainActivity
-import sebgg.dev.workoutdiary.ui.database.ExerciseRepository
-import sebgg.dev.workoutdiary.ui.database.dao.Exercise
-import sebgg.dev.workoutdiary.ui.database.dao.Workout
+import sebgg.dev.workoutdiary.database.ExerciseRepository
+import sebgg.dev.workoutdiary.database.dao.Exercise
+import sebgg.dev.workoutdiary.database.dao.Workout
 import java.util.*
 
 class WorkoutViewModel(private val repository: ExerciseRepository): ViewModel() {

@@ -1,4 +1,4 @@
-package sebgg.dev.workoutdiary.ui.helpers
+package sebgg.dev.workoutdiary.helpers
 
 import android.view.View
 import com.google.android.material.snackbar.Snackbar

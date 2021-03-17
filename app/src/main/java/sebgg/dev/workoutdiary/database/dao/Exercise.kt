@@ -1,4 +1,4 @@
-package sebgg.dev.workoutdiary.ui.database.dao
+package sebgg.dev.workoutdiary.database.dao
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow

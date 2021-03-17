@@ -1,4 +1,4 @@
-package sebgg.dev.workoutdiary.ui.helpers
+package sebgg.dev.workoutdiary.viewmodels
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel

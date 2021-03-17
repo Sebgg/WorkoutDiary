@@ -1,4 +1,4 @@
-package sebgg.dev.workoutdiary.ui.database.converters
+package sebgg.dev.workoutdiary.database.converters
 
 import androidx.room.TypeConverter
 import java.util.*

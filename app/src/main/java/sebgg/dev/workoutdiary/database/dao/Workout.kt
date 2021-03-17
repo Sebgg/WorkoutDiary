@@ -1,8 +1,8 @@
-package sebgg.dev.workoutdiary.ui.database.dao
+package sebgg.dev.workoutdiary.database.dao
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
-import sebgg.dev.workoutdiary.ui.database.converters.DateConverter
+import sebgg.dev.workoutdiary.database.converters.DateConverter
 import java.util.*
 
 @Entity(tableName = "workouts")

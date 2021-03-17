@@ -1,4 +1,4 @@
-package sebgg.dev.workoutdiary.ui.history
+package sebgg.dev.workoutdiary.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import sebgg.dev.workoutdiary.MainActivity
 import sebgg.dev.workoutdiary.R
+import sebgg.dev.workoutdiary.adapters.WorkoutHistoryAdapter
 import sebgg.dev.workoutdiary.databinding.HistoryFragmentBinding
+import sebgg.dev.workoutdiary.ui.history.HistoryViewModel
 
 class HistoryFragment: Fragment() {
 
@@ -18,7 +20,7 @@ class HistoryFragment: Fragment() {
     }
 
     private val viewModel: HistoryViewModel by activityViewModels()
-    private lateinit var adapter: HistoryAdapter
+    private lateinit var adapterWorkout: WorkoutHistoryAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,9 +34,9 @@ class HistoryFragment: Fragment() {
                 false
         )
 
-        binding.historyRecycler.adapter = HistoryAdapter()
+        binding.historyRecycler.adapter = WorkoutHistoryAdapter()
         viewModel.workouts.observe((activity as MainActivity)) {
-            it.let {(binding.historyRecycler.adapter as HistoryAdapter).submitList(it)}
+            it.let {(binding.historyRecycler.adapter as WorkoutHistoryAdapter).submitList(it)}
         }
         return binding.root
     }

@@ -1,11 +1,11 @@
-package sebgg.dev.workoutdiary.ui.database
+package sebgg.dev.workoutdiary.database
 
 import androidx.annotation.WorkerThread
 import kotlinx.coroutines.flow.Flow
-import sebgg.dev.workoutdiary.ui.database.dao.Exercise
-import sebgg.dev.workoutdiary.ui.database.dao.ExerciseDao
-import sebgg.dev.workoutdiary.ui.database.dao.Workout
-import sebgg.dev.workoutdiary.ui.database.dao.WorkoutDao
+import sebgg.dev.workoutdiary.database.dao.Exercise
+import sebgg.dev.workoutdiary.database.dao.ExerciseDao
+import sebgg.dev.workoutdiary.database.dao.Workout
+import sebgg.dev.workoutdiary.database.dao.WorkoutDao
 
 class ExerciseRepository(
     private val exerciseDao: ExerciseDao,

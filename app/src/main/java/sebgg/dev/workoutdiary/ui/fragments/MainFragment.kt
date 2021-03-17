@@ -1,7 +1,6 @@
-package sebgg.dev.workoutdiary.ui.main
+package sebgg.dev.workoutdiary.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import sebgg.dev.workoutdiary.MainActivity
 import sebgg.dev.workoutdiary.R
 import sebgg.dev.workoutdiary.databinding.MainFragmentBinding
+import sebgg.dev.workoutdiary.viewmodels.MainViewModel
 
 class MainFragment : Fragment() {
 

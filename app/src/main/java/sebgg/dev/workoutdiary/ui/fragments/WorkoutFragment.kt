@@ -1,4 +1,4 @@
-package sebgg.dev.workoutdiary.ui.workout
+package sebgg.dev.workoutdiary.ui.fragments
 
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -11,10 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import sebgg.dev.workoutdiary.MainActivity
 import sebgg.dev.workoutdiary.R
+import sebgg.dev.workoutdiary.adapters.WorkoutAdapter
 import sebgg.dev.workoutdiary.databinding.ExerciseDialogBinding
 import sebgg.dev.workoutdiary.databinding.NewWorkoutFragmentBinding
-import sebgg.dev.workoutdiary.ui.database.dao.Exercise
-import sebgg.dev.workoutdiary.ui.helpers.showShortToast
+import sebgg.dev.workoutdiary.database.dao.Exercise
+import sebgg.dev.workoutdiary.helpers.showShortToast
+import sebgg.dev.workoutdiary.ui.workout.WorkoutViewModel
 
 class WorkoutFragment : Fragment() {
     companion object {

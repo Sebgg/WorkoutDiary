@@ -1,4 +1,4 @@
-package sebgg.dev.workoutdiary.ui.history
+package sebgg.dev.workoutdiary.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,11 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import sebgg.dev.workoutdiary.R
-import sebgg.dev.workoutdiary.WorkoutApplication
-import sebgg.dev.workoutdiary.ui.database.dao.Exercise
-import sebgg.dev.workoutdiary.ui.database.dao.Workout
+import sebgg.dev.workoutdiary.database.dao.Workout
 
-class HistoryAdapter: ListAdapter<Workout, HistoryAdapter.WorkoutViewHolder>(WorkoutComparator()) {
+class WorkoutHistoryAdapter: ListAdapter<Workout, WorkoutHistoryAdapter.WorkoutViewHolder>(WorkoutComparator()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkoutViewHolder {
         return WorkoutViewHolder.create(parent)
     }

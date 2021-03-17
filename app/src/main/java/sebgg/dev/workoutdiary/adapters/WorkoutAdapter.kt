@@ -1,4 +1,4 @@
-package sebgg.dev.workoutdiary.ui.workout
+package sebgg.dev.workoutdiary.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import sebgg.dev.workoutdiary.R
-import sebgg.dev.workoutdiary.ui.database.dao.Exercise
+import sebgg.dev.workoutdiary.database.dao.Exercise
 
 class WorkoutAdapter: ListAdapter<Exercise, WorkoutAdapter.ExerciseViewHolder>(ExerciseComparator()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerciseViewHolder {
