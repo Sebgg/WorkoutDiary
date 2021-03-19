@@ -13,7 +13,7 @@ import sebgg.dev.workoutdiary.database.dao.Workout
 import sebgg.dev.workoutdiary.database.dao.WorkoutDao
 
 @Database(entities = [Exercise::class, Workout::class], version = 2, exportSchema = false)
-public abstract class ExerciseRoomDatabase:  RoomDatabase(){
+    abstract class ExerciseRoomDatabase:  RoomDatabase(){
 
     abstract fun exerciseDao(): ExerciseDao
     abstract fun workoutDao(): WorkoutDao
@@ -45,7 +45,7 @@ public abstract class ExerciseRoomDatabase:  RoomDatabase(){
     ): RoomDatabase.Callback() {
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
-            INSTANCE?.let { exerciseRoomDatabase ->
+            INSTANCE?.let { _ ->
                 scope.launch {
                     // Read in latest workout id and so forth
                 }

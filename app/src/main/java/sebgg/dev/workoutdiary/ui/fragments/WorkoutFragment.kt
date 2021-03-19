@@ -12,11 +12,11 @@ import androidx.fragment.app.activityViewModels
 import sebgg.dev.workoutdiary.MainActivity
 import sebgg.dev.workoutdiary.R
 import sebgg.dev.workoutdiary.adapters.WorkoutAdapter
+import sebgg.dev.workoutdiary.database.dao.Exercise
 import sebgg.dev.workoutdiary.databinding.ExerciseDialogBinding
 import sebgg.dev.workoutdiary.databinding.NewWorkoutFragmentBinding
-import sebgg.dev.workoutdiary.database.dao.Exercise
 import sebgg.dev.workoutdiary.helpers.showShortToast
-import sebgg.dev.workoutdiary.ui.workout.WorkoutViewModel
+import sebgg.dev.workoutdiary.viewmodels.WorkoutViewModel
 
 class WorkoutFragment : Fragment() {
     companion object {
@@ -26,7 +26,7 @@ class WorkoutFragment : Fragment() {
     private val viewModel: WorkoutViewModel by activityViewModels()
     private lateinit var wAdapter: WorkoutAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val binding = DataBindingUtil.inflate<NewWorkoutFragmentBinding>(
             inflater,
             R.layout.new_workout_fragment,

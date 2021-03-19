@@ -17,10 +17,13 @@ data class Exercise(
 interface ExerciseDao {
     // getters
     @Query("SELECT * FROM exercises")
-    fun getAll(): List<Exercise>
+    fun getAll(): Flow<List<Exercise>>
 
-    @Query("SELECT * FROM exercises WHERE workout_id == (:wid)")
-    fun loadAllByWorkout(wid: Int): Flow<List<Exercise>>
+    @Query("SELECT * FROM exercises WHERE workout_id == (:wID)")
+    fun loadAllByWorkout(wID: Int): Flow<List<Exercise>>
+
+    @Query("SELECT * FROM exercises WHERE workout_id == (:wID)")
+    fun loadDeadByWorkout(wID: Int): List<Exercise>
 
     // Inserters
     @Insert(onConflict = OnConflictStrategy.IGNORE)

@@ -20,6 +20,18 @@ class ExerciseRepository(
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
+    fun getDeadExercises(wID: Int): List<Exercise> {
+        return exerciseDao.loadDeadByWorkout(wID)
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    fun getAllExercises(): Flow<List<Exercise>> {
+        return exerciseDao.getAll()
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
     fun getAllWorkouts(): Flow<List<Workout>> {
         return workoutDao.getAll()
     }
@@ -46,8 +58,8 @@ class ExerciseRepository(
     // Counters
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    suspend fun countExercises(wid: Int): Int {
-        return exerciseDao.countByWId(wid)
+    suspend fun countExercises(wID: Int): Int {
+        return exerciseDao.countByWId(wID)
     }
 
     // Deleters

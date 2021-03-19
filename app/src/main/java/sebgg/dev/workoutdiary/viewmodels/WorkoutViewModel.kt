@@ -1,4 +1,4 @@
-package sebgg.dev.workoutdiary.ui.workout
+package sebgg.dev.workoutdiary.viewmodels
 
 import androidx.lifecycle.*
 import kotlinx.coroutines.launch

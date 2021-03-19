@@ -4,14 +4,14 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.SavedStateViewModelFactory
-import sebgg.dev.workoutdiary.viewmodels.SStateViewModel
 import sebgg.dev.workoutdiary.ui.fragments.HistoryFragment
-import sebgg.dev.workoutdiary.ui.history.HistoryViewModel
-import sebgg.dev.workoutdiary.ui.history.HistoryViewModelFactory
 import sebgg.dev.workoutdiary.ui.fragments.MainFragment
 import sebgg.dev.workoutdiary.ui.fragments.WorkoutFragment
-import sebgg.dev.workoutdiary.ui.workout.WorkoutViewModel
-import sebgg.dev.workoutdiary.ui.workout.WorkoutViewModelFactory
+import sebgg.dev.workoutdiary.viewmodels.HistoryViewModel
+import sebgg.dev.workoutdiary.viewmodels.HistoryViewModelFactory
+import sebgg.dev.workoutdiary.viewmodels.WorkoutViewModel
+import sebgg.dev.workoutdiary.viewmodels.WorkoutViewModelFactory
+import sebgg.dev.workoutdiary.viewmodels.SStateViewModel
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
