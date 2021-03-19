@@ -1,4 +1,4 @@
-package sebgg.dev.workoutdiary.ui.workout
+package sebgg.dev.workoutdiary.ui.fragments
 
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -11,10 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import sebgg.dev.workoutdiary.MainActivity
 import sebgg.dev.workoutdiary.R
+import sebgg.dev.workoutdiary.adapters.WorkoutAdapter
+import sebgg.dev.workoutdiary.database.dao.Exercise
 import sebgg.dev.workoutdiary.databinding.ExerciseDialogBinding
 import sebgg.dev.workoutdiary.databinding.NewWorkoutFragmentBinding
-import sebgg.dev.workoutdiary.ui.database.dao.Exercise
-import sebgg.dev.workoutdiary.ui.helpers.showShortToast
+import sebgg.dev.workoutdiary.helpers.showShortToast
+import sebgg.dev.workoutdiary.viewmodels.WorkoutViewModel
 
 class WorkoutFragment : Fragment() {
     companion object {
@@ -24,7 +26,7 @@ class WorkoutFragment : Fragment() {
     private val viewModel: WorkoutViewModel by activityViewModels()
     private lateinit var wAdapter: WorkoutAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val binding = DataBindingUtil.inflate<NewWorkoutFragmentBinding>(
             inflater,
             R.layout.new_workout_fragment,
@@ -92,9 +94,9 @@ class WorkoutFragment : Fragment() {
         return if (name.isBlank() or weight.isBlank() or reps.isBlank()) {
             dialog.cancel()
             showShortToast(requireView(), "One input field was not filled in!")
-            Exercise("-a", 0, 0, viewModel.currentWorkout)
+            Exercise("-a", 0, 0, viewModel.currentWorkoutID)
         } else {
-            Exercise(name, weight.toInt(), reps.toInt(), viewModel.currentWorkout)
+            Exercise(name, weight.toInt(), reps.toInt(), viewModel.currentWorkoutID)
         }
     }
 }

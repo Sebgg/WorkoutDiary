@@ -1,4 +1,4 @@
-package sebgg.dev.workoutdiary.ui.workout
+package sebgg.dev.workoutdiary.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,49 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import sebgg.dev.workoutdiary.R
-import sebgg.dev.workoutdiary.ui.database.dao.Exercise
-
-//class WorkoutAdapter(private var dataSet: MutableList<Exercise>):
-//        RecyclerView.Adapter<WorkoutAdapter.ViewHolder>() {
-//
-////    private val dataSet = listOf<Exercise>()
-//    class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
-//        // Exercise name
-//        private val name: TextView
-//
-//        // Exercise weight
-//        private val weight: TextView
-//
-//        // Exercise reps
-//        private val reps: TextView
-//
-//        init {
-//            name = view.findViewById(R.id.exercise_name)
-//            weight = view.findViewById(R.id.exercise_weight)
-//            reps = view.findViewById(R.id.exercise_reps)
-//        }
-//
-//        fun bind(exercise: Exercise) {
-//            name.text = exercise.exerciseName
-//            weight.text = exercise.exerciseWeight.toString()
-//            reps.text = exercise.exerciseReps.toString()
-//        }
-//    }
-//
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-//        val view = LayoutInflater.from(parent.context)
-//            .inflate(R.layout.exercise, parent, false)
-//
-//        return ViewHolder(view)
-//    }
-//
-//    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        val item = dataSet[position]
-//        holder.bind(item)
-//    }
-//
-//    override fun getItemCount() = dataSet.size
-//}
+import sebgg.dev.workoutdiary.database.dao.Exercise
 
 class WorkoutAdapter: ListAdapter<Exercise, WorkoutAdapter.ExerciseViewHolder>(ExerciseComparator()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerciseViewHolder {

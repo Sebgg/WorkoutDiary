@@ -1,4 +1,4 @@
-package sebgg.dev.workoutdiary.ui.main
+package sebgg.dev.workoutdiary.viewmodels
 
 import androidx.lifecycle.ViewModel
 

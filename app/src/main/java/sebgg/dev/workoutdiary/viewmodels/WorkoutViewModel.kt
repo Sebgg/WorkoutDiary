@@ -1,21 +1,19 @@
-package sebgg.dev.workoutdiary.ui.workout
+package sebgg.dev.workoutdiary.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.*
 import kotlinx.coroutines.launch
-import sebgg.dev.workoutdiary.MainActivity
-import sebgg.dev.workoutdiary.ui.database.ExerciseRepository
-import sebgg.dev.workoutdiary.ui.database.dao.Exercise
-import sebgg.dev.workoutdiary.ui.database.dao.Workout
+import sebgg.dev.workoutdiary.database.ExerciseRepository
+import sebgg.dev.workoutdiary.database.dao.Exercise
+import sebgg.dev.workoutdiary.database.dao.Workout
 import java.util.*
 
 class WorkoutViewModel(private val repository: ExerciseRepository): ViewModel() {
 
-    // Keeps track of all ids in current workout
-    var currentWorkout: Int = 1
+    // Keeps track current workout id
+    var currentWorkoutID: Int = 1
 
     // Live data passed to the recyclerview
-    var currentList: LiveData<List<Exercise>> = repository.getExercises(currentWorkout).asLiveData()
+    var currentList: LiveData<List<Exercise>> = repository.getExercises(currentWorkoutID).asLiveData()
 
     lateinit var date: String
 
@@ -23,8 +21,18 @@ class WorkoutViewModel(private val repository: ExerciseRepository): ViewModel() 
         nukedb()
     }
 
+    // Can be called to clear the database, mostly for testing and during development
     private fun nukedb() = viewModelScope.launch {
         repository.nukeDB()
+    }
+
+    fun setWID(wID: Int) {
+        currentWorkoutID = wID
+        updateCList()
+    }
+
+    private fun updateCList() {
+        currentList = repository.getExercises(currentWorkoutID).asLiveData()
     }
 
     fun addExercise(exercise: Exercise) = viewModelScope.launch {
@@ -32,10 +40,10 @@ class WorkoutViewModel(private val repository: ExerciseRepository): ViewModel() 
     }
 
     fun saveExercise() = viewModelScope.launch {
-        val workout = Workout(currentWorkout, date = Date())
+        val workout = Workout(currentWorkoutID, date = Date())
         repository.insertWorkout(workout)
-        currentWorkout += 1
-        currentList = repository.getExercises(currentWorkout).asLiveData()
+        currentWorkoutID += 1
+        updateCList()
     }
 }
 

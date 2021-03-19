@@ -1,7 +1,6 @@
-package sebgg.dev.workoutdiary.ui.main
+package sebgg.dev.workoutdiary.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import sebgg.dev.workoutdiary.MainActivity
 import sebgg.dev.workoutdiary.R
 import sebgg.dev.workoutdiary.databinding.MainFragmentBinding
+import sebgg.dev.workoutdiary.viewmodels.MainViewModel
 
 class MainFragment : Fragment() {
 
@@ -30,8 +30,11 @@ class MainFragment : Fragment() {
         )
 
         binding.buttonNewWorkout.setOnClickListener {
-            Log.i("MF","New workout will start")
-            createNewWorkout()
+            (activity as MainActivity).createNewWorkout()
+        }
+
+        binding.buttonViewOld.setOnClickListener {
+            (activity as MainActivity).showHistory()
         }
         return binding.root
     }
@@ -41,9 +44,4 @@ class MainFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         // TODO: Use the ViewModel
     }
-
-    private fun createNewWorkout() {
-        (activity as MainActivity).createNewWorkout()
-    }
-
 }

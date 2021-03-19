@@ -1,4 +1,4 @@
-package sebgg.dev.workoutdiary.ui.database.dao
+package sebgg.dev.workoutdiary.database.dao
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
@@ -15,18 +15,28 @@ data class Exercise(
 
 @Dao
 interface ExerciseDao {
+    // getters
     @Query("SELECT * FROM exercises")
-    fun getAll(): List<Exercise>
+    fun getAll(): Flow<List<Exercise>>
 
-    @Query("DELETE FROM exercises")
-    suspend fun deleteAll()
+    @Query("SELECT * FROM exercises WHERE workout_id == (:wID)")
+    fun loadAllByWorkout(wID: Int): Flow<List<Exercise>>
 
-    @Query("SELECT * FROM exercises WHERE workout_id == (:wid)")
-    fun loadAllByWorkout(wid: Int): Flow<List<Exercise>>
+    @Query("SELECT * FROM exercises WHERE workout_id == (:wID)")
+    fun loadDeadByWorkout(wID: Int): List<Exercise>
 
+    // Inserters
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertAll(vararg exercises: Exercise)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(exercise: Exercise)
+
+    // Deleters
+    @Query("DELETE FROM exercises")
+    suspend fun deleteAll()
+
+    // Counters
+    @Query("SELECT count(*) FROM exercises WHERE workout_id == (:wID)")
+    suspend fun countByWId(wID: Int): Int
 }
