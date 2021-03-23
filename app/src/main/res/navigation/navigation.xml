@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="sebgg.dev.workoutdiary.ui.fragments.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/main_fragment">
+        <action
+            android:id="@+id/action_mainFragment_to_historyFragment"
+            app:destination="@id/navigation2" />
+        <action
+            android:id="@+id/action_mainFragment_to_workoutFragment"
+            app:destination="@id/workoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/workoutFragment"
+        android:name="sebgg.dev.workoutdiary.ui.fragments.WorkoutFragment"
+        android:label="WorkoutFragment"
+        tools:layout="@layout/new_workout_fragment">
+        <action
+            android:id="@+id/action_workoutFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <navigation android:id="@+id/navigation2"
+        app:startDestination="@id/historyFragment">
+        <fragment
+            android:id="@+id/historyFragment"
+            android:name="sebgg.dev.workoutdiary.ui.fragments.HistoryFragment"
+            android:label="HistoryFragment"
+            tools:layout="@layout/history_fragment">
+            <action
+                android:id="@+id/action_historyFragment_to_mainFragment"
+                app:destination="@id/mainFragment" />
+            <action
+                android:id="@+id/action_historyFragment_to_singleHistoryFragment"
+                app:destination="@id/singleHistoryFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/singleHistoryFragment"
+            android:name="sebgg.dev.workoutdiary.ui.fragments.SingleHistoryFragment"
+            android:label="SingleHistoryFragment"
+            tools:layout="@layout/history_fragment">
+            <action
+                android:id="@+id/action_singleHistoryFragment_to_historyFragment"
+                app:destination="@id/historyFragment" />
+            <argument
+                android:name="position"
+                android:defaultValue="0"
+                app:argType="integer" />
+        </fragment>
+    </navigation>
+</navigation>

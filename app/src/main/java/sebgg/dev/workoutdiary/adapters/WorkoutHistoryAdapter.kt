@@ -7,10 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import sebgg.dev.workoutdiary.MainActivity
 import sebgg.dev.workoutdiary.R
 import sebgg.dev.workoutdiary.database.dao.Workout
-import sebgg.dev.workoutdiary.ui.fragments.HistoryFragment
 
 class WorkoutHistoryAdapter(private val listener: OnItemClickListener)
     : ListAdapter<Workout, WorkoutHistoryAdapter.WorkoutViewHolder>(WorkoutComparator()) {
