@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.setupWithNavController
 import sebgg.dev.workoutdiary.R
 import sebgg.dev.workoutdiary.activities.MainActivity
 import sebgg.dev.workoutdiary.adapters.WorkoutAdapter
@@ -33,6 +36,11 @@ class SingleHistoryFragment: Fragment() {
         viewModel.exercises.observe((activity as MainActivity)) {
             it.let {(binding.historyRecycler.adapter as WorkoutAdapter).submitList(it)}
         }
+
+        binding.historyToolbar.setupWithNavController(findNavController())
+//        binding.historyToolbar.setNavigationOnClickListener {
+//            view?.findNavController()?.navigateUp()
+//        }
 
         return binding.root
     }

@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import sebgg.dev.workoutdiary.activities.MainActivity
 import sebgg.dev.workoutdiary.R
 import sebgg.dev.workoutdiary.adapters.WorkoutAdapter
@@ -46,6 +47,8 @@ class WorkoutFragment : Fragment() {
             )
 //            (activity as MainActivity).finishWorkout()
         }
+
+        binding.newWToolbar.setupWithNavController(findNavController())
 
         wAdapter = WorkoutAdapter()
         viewModel.currentList.observe((activity as MainActivity)) { exercises ->
