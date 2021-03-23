@@ -7,7 +7,6 @@ import sebgg.dev.workoutdiary.database.dao.Exercise
 import sebgg.dev.workoutdiary.database.dao.Workout
 
 class HistoryViewModel(private val repository: ExerciseRepository): ViewModel() {
-    var dummy: Int = 1
     val workouts: LiveData<List<Workout>> = repository.getAllWorkouts().asLiveData()
 
     lateinit var exercises: LiveData<List<Exercise>>

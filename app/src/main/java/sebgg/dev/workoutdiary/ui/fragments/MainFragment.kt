@@ -1,13 +1,16 @@
 package sebgg.dev.workoutdiary.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import sebgg.dev.workoutdiary.MainActivity
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import sebgg.dev.workoutdiary.activities.MainActivity
 import sebgg.dev.workoutdiary.R
 import sebgg.dev.workoutdiary.databinding.MainFragmentBinding
 import sebgg.dev.workoutdiary.viewmodels.MainViewModel
@@ -29,13 +32,23 @@ class MainFragment : Fragment() {
             false
         )
 
+        Log.i("MF", binding.buttonNewWorkout.text as String)
+
+        val navController = findNavController()
+
+
         binding.buttonNewWorkout.setOnClickListener {
-            (activity as MainActivity).createNewWorkout()
+            navController.navigate(
+                    MainFragmentDirections.actionMainFragmentToWorkoutFragment()
+            )
         }
 
         binding.buttonViewOld.setOnClickListener {
-            (activity as MainActivity).showHistory()
+            navController.navigate(
+                    MainFragmentDirections.actionMainFragmentToHistoryFragment()
+            )
         }
+
         return binding.root
     }
 

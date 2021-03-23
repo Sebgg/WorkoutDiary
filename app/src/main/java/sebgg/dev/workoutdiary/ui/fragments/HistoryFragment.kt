@@ -1,18 +1,17 @@
 package sebgg.dev.workoutdiary.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import sebgg.dev.workoutdiary.MainActivity
+import androidx.navigation.fragment.findNavController
+import sebgg.dev.workoutdiary.activities.MainActivity
 import sebgg.dev.workoutdiary.R
 import sebgg.dev.workoutdiary.adapters.WorkoutAdapter
 import sebgg.dev.workoutdiary.adapters.WorkoutHistoryAdapter
-import sebgg.dev.workoutdiary.database.dao.Workout
 import sebgg.dev.workoutdiary.databinding.HistoryFragmentBinding
 import sebgg.dev.workoutdiary.viewmodels.HistoryViewModel
 
@@ -23,7 +22,6 @@ class HistoryFragment: Fragment(), WorkoutHistoryAdapter.OnItemClickListener {
     }
 
     private val viewModel: HistoryViewModel by activityViewModels()
-    private lateinit var adapterWorkout: WorkoutHistoryAdapter
     private lateinit var binding: HistoryFragmentBinding
 
     override fun onCreateView(
@@ -48,13 +46,17 @@ class HistoryFragment: Fragment(), WorkoutHistoryAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
-        val workout: Int = position + 1
-        binding.historyRecycler.adapter = WorkoutAdapter()
-
-        viewModel.updateExercisesById(workout)
-
-        viewModel.exercises.observe((activity as MainActivity)) {
-            it.let {(binding.historyRecycler.adapter as WorkoutAdapter).submitList(it)}
-        }
+        val pos = position + 1
+        findNavController().navigate(
+                HistoryFragmentDirections.actionHistoryFragmentToSingleHistoryFragment(pos)
+        )
+//        val workout: Int = position + 1
+//        binding.historyRecycler.adapter = WorkoutAdapter()
+//
+//        viewModel.updateExercisesById(workout)
+//
+//        viewModel.exercises.observe((activity as MainActivity)) {
+//            it.let {(binding.historyRecycler.adapter as WorkoutAdapter).submitList(it)}
+//        }
     }
 }

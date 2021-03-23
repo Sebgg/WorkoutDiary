@@ -9,7 +9,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import sebgg.dev.workoutdiary.MainActivity
+import androidx.navigation.fragment.findNavController
+import sebgg.dev.workoutdiary.activities.MainActivity
 import sebgg.dev.workoutdiary.R
 import sebgg.dev.workoutdiary.adapters.WorkoutAdapter
 import sebgg.dev.workoutdiary.database.dao.Exercise
@@ -40,7 +41,10 @@ class WorkoutFragment : Fragment() {
 
         binding.buttonFinishWorkout.setOnClickListener {
             viewModel.saveExercise()
-            (activity as MainActivity).finishWorkout()
+            findNavController().navigate(
+                    WorkoutFragmentDirections.actionWorkoutFragmentToMainFragment()
+            )
+//            (activity as MainActivity).finishWorkout()
         }
 
         wAdapter = WorkoutAdapter()
@@ -96,6 +100,7 @@ class WorkoutFragment : Fragment() {
             showShortToast(requireView(), "One input field was not filled in!")
             Exercise("-a", 0, 0, viewModel.currentWorkoutID)
         } else {
+            showShortToast(requireView(), "$name added to exercises!")
             Exercise(name, weight.toInt(), reps.toInt(), viewModel.currentWorkoutID)
         }
     }
