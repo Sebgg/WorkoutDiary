@@ -12,4 +12,10 @@
     <string name="text_finish_workout">Avsluta träningspass</string>
     <string name="exercise_dialog_title">Lägg till en övning till träningspasset</string>
     <string name="hint_exercise_name">Namn på övningen</string>
+    <string name="hint_exercise_weight">Vikt</string>
+    <string name="unit_exercise_weight_kg">Kg</string>
+    <string name="hint_exercise_reps">Antal reps</string>
+    <string name="history_date">Datum</string>
+    <string name="placeholder_date">1978/0/0</string>
+    <string name="appbar_title_main">Workout Diary</string>
 </resources>
