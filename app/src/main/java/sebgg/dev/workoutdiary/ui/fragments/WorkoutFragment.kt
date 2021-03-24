@@ -97,14 +97,18 @@ class WorkoutFragment : Fragment() {
         val name = binding.inputExerciseName.text.toString()
         val weight = binding.inputExerciseWeight.text.toString()
         val reps = binding.inputExerciseReps.text.toString()
+        val calories = binding.inputExerciseWork.text.toString()
+        val duration = binding.inputExerciseTime.text.toString()
 
         return if (name.isBlank() or weight.isBlank() or reps.isBlank()) {
             dialog.cancel()
             showShortToast(requireView(), "One input field was not filled in!")
-            Exercise("-a", 0, 0, viewModel.currentWorkoutID)
+            Exercise("-a", 0, 0,
+                    0.0, 0.0, viewModel.currentWorkoutID)
         } else {
             showShortToast(requireView(), "$name added to exercises!")
-            Exercise(name, weight.toInt(), reps.toInt(), viewModel.currentWorkoutID)
+            Exercise(name, weight.toInt(), reps.toInt(), calories.toDouble(),
+                    duration.toDouble(), viewModel.currentWorkoutID)
         }
     }
 }

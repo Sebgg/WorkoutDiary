@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -12,7 +13,7 @@ import sebgg.dev.workoutdiary.database.dao.ExerciseDao
 import sebgg.dev.workoutdiary.database.dao.Workout
 import sebgg.dev.workoutdiary.database.dao.WorkoutDao
 
-@Database(entities = [Exercise::class, Workout::class], version = 2, exportSchema = false)
+@Database(entities = [Exercise::class, Workout::class], version = 3, exportSchema = false)
     abstract class ExerciseRoomDatabase:  RoomDatabase(){
 
     abstract fun exerciseDao(): ExerciseDao
@@ -24,6 +25,7 @@ import sebgg.dev.workoutdiary.database.dao.WorkoutDao
         private var INSTANCE: ExerciseRoomDatabase? = null
 
         fun getDatabase(context: Context, scope: CoroutineScope): ExerciseRoomDatabase {
+
             // if instance isn't null, return it. Else
             // create the database and return instance
             return INSTANCE ?: synchronized(this) {
@@ -33,6 +35,7 @@ import sebgg.dev.workoutdiary.database.dao.WorkoutDao
                     "workout_database"
                 )
                 .addCallback(ExerciseDatabaseCallback(scope))
+                .fallbackToDestructiveMigration() // THIS IS ONLY FOR PRE-RELEASE DEV
                 .build()
                 INSTANCE = instance
                 instance

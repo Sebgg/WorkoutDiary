@@ -54,6 +54,8 @@ class WorkoutAdapter: ListAdapter<Exercise, WorkoutAdapter.ExerciseViewHolder>(E
             return oldItem.exerciseName == newItem.exerciseName
                     && oldItem.exerciseWeight == newItem.exerciseWeight
                     && oldItem.exerciseReps == newItem.exerciseReps
+                    && oldItem.exerciseWork == newItem.exerciseWork
+                    && oldItem.exerciseDuration == newItem.exerciseDuration
         }
     }
 }
