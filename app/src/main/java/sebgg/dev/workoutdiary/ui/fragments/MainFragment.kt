@@ -8,9 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import sebgg.dev.workoutdiary.activities.MainActivity
 import sebgg.dev.workoutdiary.R
 import sebgg.dev.workoutdiary.databinding.MainFragmentBinding
 import sebgg.dev.workoutdiary.viewmodels.MainViewModel
@@ -52,6 +50,7 @@ class MainFragment : Fragment() {
         return binding.root
     }
 
+    @Suppress("DEPRECATION")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)

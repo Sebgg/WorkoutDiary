@@ -6,15 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.SavedStateViewModelFactory
 import sebgg.dev.workoutdiary.R
 import sebgg.dev.workoutdiary.WorkoutApplication
-import sebgg.dev.workoutdiary.ui.fragments.HistoryFragment
-import sebgg.dev.workoutdiary.ui.fragments.MainFragment
-import sebgg.dev.workoutdiary.ui.fragments.WorkoutFragment
-import sebgg.dev.workoutdiary.viewmodels.HistoryViewModel
-import sebgg.dev.workoutdiary.viewmodels.HistoryViewModelFactory
-import sebgg.dev.workoutdiary.viewmodels.WorkoutViewModel
-import sebgg.dev.workoutdiary.viewmodels.WorkoutViewModelFactory
-import sebgg.dev.workoutdiary.viewmodels.SStateViewModel
-import java.util.*
+import sebgg.dev.workoutdiary.viewmodels.*
 
 class MainActivity : AppCompatActivity() {
 

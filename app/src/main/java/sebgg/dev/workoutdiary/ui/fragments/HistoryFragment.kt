@@ -7,12 +7,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
-import sebgg.dev.workoutdiary.activities.MainActivity
 import sebgg.dev.workoutdiary.R
-import sebgg.dev.workoutdiary.adapters.WorkoutAdapter
+import sebgg.dev.workoutdiary.activities.MainActivity
 import sebgg.dev.workoutdiary.adapters.WorkoutHistoryAdapter
 import sebgg.dev.workoutdiary.databinding.HistoryFragmentBinding
 import sebgg.dev.workoutdiary.viewmodels.HistoryViewModel

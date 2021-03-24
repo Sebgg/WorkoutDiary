@@ -18,4 +18,6 @@
     <string name="history_date">Datum</string>
     <string name="placeholder_date">1978/0/0</string>
     <string name="appbar_title_main">Workout Diary</string>
+    <string name="hint_exercise_work">Kilo Kalorier</string>
+    <string name="hint_exercise_time">minuter</string>
 </resources>
