@@ -30,8 +30,6 @@ class MainFragment : Fragment() {
             false
         )
 
-        Log.i("MF", binding.buttonNewWorkout.text as String)
-
         val navController = findNavController()
 
 
