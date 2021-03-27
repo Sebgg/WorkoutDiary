@@ -13,6 +13,7 @@ class WorkoutApplication: Application() {
 
     val repository by lazy { ExerciseRepository(
         database.exerciseDao(),
-        database.workoutDao()
+        database.workoutDao(),
+        database.measurementDao()
     ) }
 }

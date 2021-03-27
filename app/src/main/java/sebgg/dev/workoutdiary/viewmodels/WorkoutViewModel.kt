@@ -4,6 +4,7 @@ import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 import sebgg.dev.workoutdiary.database.ExerciseRepository
 import sebgg.dev.workoutdiary.database.dao.Exercise
+import sebgg.dev.workoutdiary.database.dao.Measurement
 import sebgg.dev.workoutdiary.database.dao.Workout
 import java.util.*
 
@@ -39,8 +40,12 @@ class WorkoutViewModel(private val repository: ExerciseRepository): ViewModel() 
         repository.insertExercise(exercise)
     }
 
+    fun addMeasurements(measurement: Measurement) = viewModelScope.launch {
+        repository.insertMeasurement(measurement)
+    }
+
     fun saveExercise() = viewModelScope.launch {
-        val workout = Workout(currentWorkoutID, date = Date())
+        val workout = Workout(currentWorkoutID, date = Date(), 0)
         repository.insertWorkout(workout)
         currentWorkoutID += 1
         updateCList()

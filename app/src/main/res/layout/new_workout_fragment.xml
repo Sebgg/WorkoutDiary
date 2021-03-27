@@ -21,11 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/new_w_recycler"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="spread">
+            android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_add_exercise"
@@ -41,6 +37,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/text_finish_workout" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_add_measurements"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/text_add_measures" />
         </LinearLayout>
 
 

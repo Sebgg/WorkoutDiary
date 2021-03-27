@@ -20,4 +20,5 @@
     <string name="appbar_title_main">Workout Diary</string>
     <string name="hint_exercise_work">Kilo Kalorier</string>
     <string name="hint_exercise_time">minuter</string>
+    <string name="text_add_measures">Lägg till mått</string>
 </resources>

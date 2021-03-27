@@ -19,4 +19,5 @@
     <string name="appbar_title_main">Workout Diary</string>
     <string name="hint_exercise_time">minutes</string>
     <string name="hint_exercise_work">calories</string>
+    <string name="text_add_measures">Add measurements</string>
 </resources>

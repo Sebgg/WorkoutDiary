@@ -11,11 +11,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.button.MaterialButton
 import sebgg.dev.workoutdiary.R
 import sebgg.dev.workoutdiary.activities.MainActivity
 import sebgg.dev.workoutdiary.adapters.WorkoutAdapter
 import sebgg.dev.workoutdiary.database.dao.Exercise
+import sebgg.dev.workoutdiary.database.dao.Measurement
 import sebgg.dev.workoutdiary.databinding.ExerciseDialogBinding
+import sebgg.dev.workoutdiary.databinding.MeasurementsDialogBinding
 import sebgg.dev.workoutdiary.databinding.NewWorkoutFragmentBinding
 import sebgg.dev.workoutdiary.helpers.showShortToast
 import sebgg.dev.workoutdiary.viewmodels.WorkoutViewModel
@@ -45,7 +48,12 @@ class WorkoutFragment : Fragment() {
             findNavController().navigate(
                     WorkoutFragmentDirections.actionWorkoutFragmentToMainFragment()
             )
-//            (activity as MainActivity).finishWorkout()
+        }
+
+        binding.buttonFinishWorkout.isEnabled = false
+
+        binding.buttonAddMeasurements.setOnClickListener {
+            addMeasurements(inflater, it as MaterialButton)
         }
 
         binding.newWToolbar.setupWithNavController(findNavController())
@@ -53,6 +61,9 @@ class WorkoutFragment : Fragment() {
         wAdapter = WorkoutAdapter()
         viewModel.currentList.observe((activity as MainActivity)) { exercises ->
             exercises.let { wAdapter.submitList(it) }
+            if (exercises.isNotEmpty() && !binding.buttonFinishWorkout.isEnabled) {
+                binding.buttonFinishWorkout.isEnabled = true
+            }
         }
         binding.newWRecycler.adapter = wAdapter
 
@@ -73,7 +84,7 @@ class WorkoutFragment : Fragment() {
         builder.setView(binding.root)
 
         builder.setPositiveButton(
-                android.R.string.ok,
+            android.R.string.ok,
             fun(dialog: DialogInterface, _: Number) {
                 dialog.dismiss()
                 val exercise = createExercise(binding, dialog)
@@ -84,7 +95,41 @@ class WorkoutFragment : Fragment() {
             })
 
         builder.setNegativeButton(
-                "Cancel",
+                android.R.string.cancel,
+                fun(dialog: DialogInterface, _: Number) {
+                    dialog.cancel()
+                }
+        )
+
+        builder.show()
+    }
+
+    private fun addMeasurements(inflater: LayoutInflater, button: MaterialButton) {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+        builder.setTitle("Add measurements to workout")
+
+        val binding = DataBindingUtil.inflate<MeasurementsDialogBinding>(
+                inflater,
+                R.layout.measurements_dialog,
+                view as ViewGroup,
+                false
+        )
+
+        builder.setView(binding.root)
+
+        builder.setPositiveButton(
+                android.R.string.ok,
+                fun(dialog: DialogInterface, _: Number) {
+                    dialog.dismiss()
+                    val measurements = createMeasurements(binding, dialog)
+
+                    viewModel.addMeasurements(measurements)
+                    button.isEnabled = false
+                    showShortToast(view as ViewGroup, "Measurements added!")
+                }
+        )
+
+        builder.setNegativeButton(android.R.string.cancel,
                 fun(dialog: DialogInterface, _: Number) {
                     dialog.cancel()
                 }
@@ -100,9 +145,9 @@ class WorkoutFragment : Fragment() {
         val calories = binding.inputExerciseWork.text.toString()
         val duration = binding.inputExerciseTime.text.toString()
 
-        return if (name.isBlank() or weight.isBlank() or reps.isBlank()) {
+        return if (name.isBlank()) {
             dialog.cancel()
-            showShortToast(requireView(), "One input field was not filled in!")
+            showShortToast(requireView(), "Need to write a name!")
             Exercise("-a", 0, 0,
                     0.0, 0.0, viewModel.currentWorkoutID)
         } else {
@@ -110,5 +155,13 @@ class WorkoutFragment : Fragment() {
             Exercise(name, weight.toInt(), reps.toInt(), calories.toDouble(),
                     duration.toDouble(), viewModel.currentWorkoutID)
         }
+    }
+
+    private fun createMeasurements(
+            binding: MeasurementsDialogBinding,
+            dialog: DialogInterface): Measurement {
+
+        return Measurement(true, 0.0, 0.0, 0.0,
+                0.0, 0.0)
     }
 }

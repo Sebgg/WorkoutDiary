@@ -13,9 +13,11 @@ data class Workout(
         val uid: Int,
 
         @ColumnInfo(name = "date")
-        val date: Date?
-)  {
-}
+        val date: Date?,
+
+        @ColumnInfo(name = "measurementsID")
+        val mid: Int?
+)
 
 @Dao
 interface WorkoutDao {

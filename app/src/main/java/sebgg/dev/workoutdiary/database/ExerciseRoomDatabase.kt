@@ -8,16 +8,14 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import sebgg.dev.workoutdiary.database.dao.Exercise
-import sebgg.dev.workoutdiary.database.dao.ExerciseDao
-import sebgg.dev.workoutdiary.database.dao.Workout
-import sebgg.dev.workoutdiary.database.dao.WorkoutDao
+import sebgg.dev.workoutdiary.database.dao.*
 
-@Database(entities = [Exercise::class, Workout::class], version = 3, exportSchema = false)
+@Database(entities = [Exercise::class, Workout::class, Measurement::class], version = 5, exportSchema = false)
     abstract class ExerciseRoomDatabase:  RoomDatabase(){
 
     abstract fun exerciseDao(): ExerciseDao
     abstract fun workoutDao(): WorkoutDao
+    abstract fun measurementDao(): MeasurementDao
 
     companion object {
         // Singleton instance of database
@@ -35,6 +33,7 @@ import sebgg.dev.workoutdiary.database.dao.WorkoutDao
                     "workout_database"
                 )
                 .addCallback(ExerciseDatabaseCallback(scope))
+                .addMigrations(MIGRATION_3_4)
                 .fallbackToDestructiveMigration() // THIS IS ONLY FOR PRE-RELEASE DEV
                 .build()
                 INSTANCE = instance

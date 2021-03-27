@@ -2,14 +2,12 @@ package sebgg.dev.workoutdiary.database
 
 import androidx.annotation.WorkerThread
 import kotlinx.coroutines.flow.Flow
-import sebgg.dev.workoutdiary.database.dao.Exercise
-import sebgg.dev.workoutdiary.database.dao.ExerciseDao
-import sebgg.dev.workoutdiary.database.dao.Workout
-import sebgg.dev.workoutdiary.database.dao.WorkoutDao
+import sebgg.dev.workoutdiary.database.dao.*
 
 class ExerciseRepository(
     private val exerciseDao: ExerciseDao,
-    private val workoutDao: WorkoutDao
+    private val workoutDao: WorkoutDao,
+    private val measurementDao: MeasurementDao
 ) {
     // Getters
     @Suppress("RedundantSuspendModifier")
@@ -53,6 +51,12 @@ class ExerciseRepository(
     @WorkerThread
     suspend fun insertWorkout(workout: Workout) {
         workoutDao.insert(workout)
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun insertMeasurement(measurement: Measurement) {
+        measurementDao.insert(measurement)
     }
 
     // Counters
